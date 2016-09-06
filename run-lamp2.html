@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 400px;
+			height: 30px;
+			border:1px solid black;
+			overflow: hidden;
+			position: relative;
+			left: 500px;
+			top:100px;
+		}
+		.content{
+			width: 400px;
+			height: 300px;
+			position: absolute;
+			background:-webkit-repeating-linear-gradient(-45deg,blue 0,blue 20px,white 20px,white 40px,red 40px,red 60px,white 60px,white 80px);
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oBox = document.querySelector('.box');
+			var oCnt = document.querySelector('.content');
+			var oInt1 = document.getElementsByTagName('input')[0];
+			var oInt2 =document.getElementsByTagName('input')[1];
+			var t = -270;
+			var timer = null;
+			oInt1.onchange = function(){
+				oCnt.style.WebkitRepeatingLinearGradient = -45+'deg,'+this.value+' '+0+','+this.value+' '+20+'px,'+'white'+' '+20+'px,'+'white'+' '+40+'px,'+'red'+' '+40+'px,'+'red'+' '+60+'px,'+'white'+' '+60+'px,'+'white'+' '+80+'px';
+			};
+			clearInterval(timer);
+			timer = setInterval(function(){
+				t++;
+				if (t>-240) {
+					t=-270;
+				}
+				oCnt.style.top = t+'px';
+			},60);
+		};
+	</script>
+</head>
+<body>
+	<input type="color" value="#0000ff">
+	<input type="color" value="#ff0000">
+	<div class="box">
+		<div class="content"></div>
+	</div>
+</body>
+</html>

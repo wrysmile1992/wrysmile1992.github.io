@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 300px;
+			height: 300px;
+			position: absolute;
+			left:500px;
+			top:400px;
+			font-size: 40px;
+			text-shadow: 0 0 0 black;
+		}
+		span{
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background: yellow;
+			border-radius: 50%;
+			box-shadow: 0 0 100px yellow;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oS = document.querySelector('span');
+			var oDiv = document.querySelector('div');
+			document.onmousemove = function(ev){
+				oS.style.left = ev.pageX - oS.offsetWidth/2+'px';
+				oS.style.top = ev.pageY - oS.offsetHeight/2+'px';
+				var x = oDiv.offsetLeft+oDiv.offsetWidth/2-ev.pageX;
+				var y = oDiv.offsetTop+oDiv.offsetHeight/2-ev.pageY;
+				var dis = Math.sqrt(x*x+y*y);
+				oDiv.style.textShadow = x/3+'px '+y/2+'px '+dis/10+'px black';
+			};
+		};
+	</script>
+</head>
+<body>
+	<span></span>
+	<div>
+		你看到了什么
+	</div>
+</body>
+</html>
